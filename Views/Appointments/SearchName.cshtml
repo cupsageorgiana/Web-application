@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AtelierAuto.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Search by Client name </h1>
+
+  <form asp-controller="Appointments" asp-action="SearchName" method="get">
+      <p>
+          Name: <input type="text" name="name">
+          <input type="submit" value="Filter" />
+      </p>
+  </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="UpdateStatus" asp-route-id="@item.Id">Mark status</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
